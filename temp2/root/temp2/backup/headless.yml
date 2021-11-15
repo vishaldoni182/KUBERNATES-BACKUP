@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: app-deployment-headless
+    labels:
+       app: my-app-pod-headless
+spec:
+    replicas: 2        
+    selector:
+       matchLabels: 
+          app: my-app-pod-headless
+    template:
+       metadata:
+          labels:          
+            app: my-app-pod-headless
+       spec:
+          containers:
+          - name: headless
+            image: vishaldoni182/k8s:latest
+            imagePullPolicy: IfNotPresent
+            ports:
+            - containerPort: 80
+                     
+                            
+                   
+        

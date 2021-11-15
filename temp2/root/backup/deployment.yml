@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: app-deployment
+    labels:
+       app: my-app-pod
+spec:
+    replicas: 4        
+    selector:
+       matchLabels: 
+          app: my-app-pod
+    template:
+       metadata:
+          labels:          
+            app: my-app-pod
+       spec:
+          containers:
+          - name: ipapp
+            image: vishaldoni182/k8s:latest
+            imagePullPolicy: IfNotPresent
+            ports:
+            - containerPort: 80
+                     
+                            
+                   
+        

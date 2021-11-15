@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: deployment-ns-node
+    namespace: my-ns
+    labels:
+          app: my-nginx-node
+spec:
+    replicas: 4        
+    selector:
+          matchLabels: 
+               app: my-nginx-node
+    template:
+          metadata:
+               labels:          
+                    app: my-nginx-node
+          spec:
+               containers:
+                  - name: nginx
+                    image: nginx:1.16
+                    ports:
+                    - containerPort: 80
+               nodeSelector:
+                    env : test    
+                     
+                            
+                   
+        
